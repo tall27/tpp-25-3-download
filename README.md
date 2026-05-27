@@ -71,7 +71,7 @@ Start-Process -FilePath "msiexec.exe" -ArgumentList "/i", ".\rewrite_amd64_en-US
 
 Write-Host "Running CyberArk Certificate Manager prerequisite check..."
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
-& ".\Venafi-PreReq-Check.ps1"
+& ".\Venafi-PreReq-Check.ps1" -install
 
 Write-Host "Prerequisite installation and validation steps completed."
 Write-Host "You can now run the CyberArk Certificate Manager installer from $ExtractPath."
