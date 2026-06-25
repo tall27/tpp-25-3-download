@@ -17,12 +17,12 @@ Download the files directly from the latest release assets:
 
 | File | Description |
 | --- | --- |
-| [`MicrosoftEdgeWebView2RuntimeInstallerX64.exe`](https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/MicrosoftEdgeWebView2RuntimeInstallerX64.exe) | Microsoft Edge WebView2 Runtime offline installer |
-| [`MicrosoftEdgeWebview2Setup.exe`](https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/MicrosoftEdgeWebview2Setup.exe) | Microsoft Edge WebView2 setup bootstrapper |
-| [`rewrite_amd64_en-US.msi`](https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/rewrite_amd64_en-US.msi) | Microsoft IIS URL Rewrite module |
-| [`BaseConfiguration.exe`](https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/BaseConfiguration.exe) | Base configuration utility |
-| [`Venafi-PreReq-Check.ps1`](https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/Venafi-PreReq-Check.ps1) | Prerequisite validation script |
-| [`Trust.Protection.Platform_25.3_1778857190122.zip`](https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/Trust.Protection.Platform_25.3_1778857190122.zip) | CyberArk Certificate Manager / Trust Protection Platform 25.3 installation package |
+| [`MicrosoftEdgeWebView2RuntimeInstallerX64.exe`](https://github.com/tall27/tpp-26-1-download/releases/download/26.1/MicrosoftEdgeWebView2RuntimeInstallerX64.exe) | Microsoft Edge WebView2 Runtime offline installer |
+| [`MicrosoftEdgeWebview2Setup.exe`](https://github.com/tall27/tpp-26-1-download/releases/download/26.1/MicrosoftEdgeWebview2Setup.exe) | Microsoft Edge WebView2 setup bootstrapper |
+| [`rewrite_amd64_en-US.msi`](https://github.com/tall27/tpp-26-1-download/releases/download/26.1/rewrite_amd64_en-US.msi) | Microsoft IIS URL Rewrite module |
+| [`BaseConfiguration.exe`](https://github.com/tall27/tpp-26-1-download/releases/download/26.1/BaseConfiguration.exe) | Base configuration utility |
+| [`Venafi-PreReq-Check.ps1`](https://github.com/tall27/tpp-26-1-download/releases/download/26.1/Venafi-PreReq-Check.ps1) | Prerequisite validation script |
+| [`CyberArk.Trust.Protection.Foundation.26.1.0.zip`](https://github.com/tall27/tpp-26-1-download/releases/download/26.1/CyberArk.Trust.Protection.Foundation.26.1.0.zip) | CyberArk Certificate Manager / Trust Protection Platform 26.1 installation package |
 
 ## Suggested Offline Installation Flow
 
@@ -34,22 +34,22 @@ Download the files directly from the latest release assets:
 
 ## PowerShell Example
 
-The following example creates `C:\Install\TPP-25.3`, downloads the required files, extracts the TPP installation ZIP, installs prerequisites, and runs the prerequisite validation script.
+The following example creates `C:\Install\TPP-26.1`, downloads the required files, extracts the TPP installation ZIP, installs prerequisites, and runs the prerequisite validation script.
 
 ```powershell
-$InstallPath = "C:\Install\TPP-25.3"
+$InstallPath = "C:\Install\TPP-26.1"
 $ExtractPath = Join-Path $InstallPath "Extracted"
 
 New-Item -ItemType Directory -Path $InstallPath -Force | Out-Null
 New-Item -ItemType Directory -Path $ExtractPath -Force | Out-Null
 
 $Downloads = @{
-    "MicrosoftEdgeWebView2RuntimeInstallerX64.exe" = "https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
-    "MicrosoftEdgeWebview2Setup.exe" = "https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/MicrosoftEdgeWebview2Setup.exe"
-    "rewrite_amd64_en-US.msi" = "https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/rewrite_amd64_en-US.msi"
-    "BaseConfiguration.exe" = "https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/BaseConfiguration.exe"
-    "Venafi-PreReq-Check.ps1" = "https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/Venafi-PreReq-Check.ps1"
-    "Trust.Protection.Platform_25.3_1778857190122.zip" = "https://github.com/tall27/tpp-25-3-download/releases/download/v25.3/Trust.Protection.Platform_25.3_1778857190122.zip"
+    "MicrosoftEdgeWebView2RuntimeInstallerX64.exe" = "https://github.com/tall27/tpp-26-1-download/releases/download/26.1/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
+    "MicrosoftEdgeWebview2Setup.exe" = "https://github.com/tall27/tpp-26-1-download/releases/download/26.1/MicrosoftEdgeWebview2Setup.exe"
+    "rewrite_amd64_en-US.msi" = "https://github.com/tall27/tpp-26-1-download/releases/download/26.1/rewrite_amd64_en-US.msi"
+    "BaseConfiguration.exe" = "https://github.com/tall27/tpp-26-1-download/releases/download/26.1/BaseConfiguration.exe"
+    "Venafi-PreReq-Check.ps1" = "https://github.com/tall27/tpp-26-1-download/releases/download/26.1/Venafi-PreReq-Check.ps1"
+    "CyberArk.Trust.Protection.Foundation.26.1.0.zip" = "https://github.com/tall27/tpp-26-1-download/releases/download/26.1/CyberArk.Trust.Protection.Foundation.26.1.0.zip"
 }
 
 foreach ($File in $Downloads.GetEnumerator()) {
@@ -61,7 +61,7 @@ foreach ($File in $Downloads.GetEnumerator()) {
 Set-Location $InstallPath
 
 Write-Host "Extracting CyberArk Certificate Manager installation package..."
-Expand-Archive -Path ".\Trust.Protection.Platform_25.3_1778857190122.zip" -DestinationPath $ExtractPath -Force
+Expand-Archive -Path ".\CyberArk.Trust.Protection.Foundation.26.1.0.zip" -DestinationPath $ExtractPath -Force
 
 Write-Host "Installing Microsoft Edge WebView2 Runtime..."
 Start-Process -FilePath ".\MicrosoftEdgeWebView2RuntimeInstallerX64.exe" -ArgumentList "/silent", "/install" -Wait
